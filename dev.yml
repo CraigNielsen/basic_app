@@ -1,0 +1,19 @@
+version: '2'
+services:
+  backend:
+    extends:
+      service: backend
+      file: ./base.yml
+    container_name: simple-backend
+    env_file:
+      - ./dev.env
+    image: simple-backend
+    network_mode: "host"
+    volumes:
+      - ../backend-service:/home/craig/backend-service
+
+  backend-server:
+    extends:
+      service: backend
+    container_name: simple-backend-server
+    command: python manage.py run-server
