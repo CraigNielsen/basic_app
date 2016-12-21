@@ -1,11 +1,13 @@
 import logging
+import logging.config
 logging.config.fileConfig('logging.ini')
 logger = logging.getLogger('manage')
 
 from flask import Flask, redirect, current_app
 from flask_script import Manager, Shell, Command, Server, prompt_bool
-from .dummy_data import get_dummy_data
-
+# from .dummy_data import get_dummy_data
+def get_dummy_data():
+    return []
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()

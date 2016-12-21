@@ -49,7 +49,7 @@ RUN useradd -Um -s /bin/zsh craig
 # Zsh
 USER root
 WORKDIR /home/craig
-COPY ./ops/.zshrc .zshrc
+COPY .zshrc .zshrc
 RUN chown craig:craig .zshrc
 RUN chsh -s /bin/zsh craig
 
@@ -57,8 +57,8 @@ RUN chsh -s /bin/zsh craig
 # Vim
 USER root
 WORKDIR /home/craig
-COPY ./ops/.vimrc .vimrc
-COPY ./ops/solarized.vim .vim/colors/
+COPY .vimrc .vimrc
+COPY solarized.vim .vim/colors/
 RUN mkdir -p .vim/autoload .vim/bundle
 RUN curl -LSso .vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 RUN chown -R craig:craig .vim
@@ -78,8 +78,8 @@ ENV HOME=/home/craig
 ENV PYENV_ROOT $HOME/.pyenv
 ENV PATH $PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH
 RUN pyenv install 3.5.1
-RUN pyenv virtualenv 3.5.1 simpleApp
-RUN pyenv global simpleApp
+RUN pyenv virtualenv 3.5.1 basic
+RUN pyenv global basic
 RUN pyenv rehash
 
 

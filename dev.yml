@@ -10,10 +10,10 @@ services:
     image: simple-backend
     network_mode: "host"
     volumes:
-      - ../backend-service:/home/craig/backend-service
+      - .:/home/craig/backend-service
 
   backend-server:
     extends:
       service: backend
     container_name: simple-backend-server
-    command: python manage.py run-server
+    command: python simpleApp.py run-server
